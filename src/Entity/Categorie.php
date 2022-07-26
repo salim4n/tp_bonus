@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\TableDelete;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
 class Categorie
@@ -22,7 +23,7 @@ class Categorie
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDAjout = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produits::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produits::class )]
     private Collection $Produits;
 
     public function __construct()

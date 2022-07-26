@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProduitsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use mysql_xdevapi\TableDelete;
 
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
 class Produits
@@ -29,7 +30,7 @@ class Produits
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDAjout = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Produits')]
+    #[ORM\ManyToOne(cascade: ["persist","remove"], inversedBy: 'Produits')]
     private ?Categorie $categorie = null;
 
     public function getId(): ?int
