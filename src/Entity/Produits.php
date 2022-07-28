@@ -30,7 +30,7 @@ class Produits
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDAjout = null;
 
-    #[ORM\ManyToOne(cascade: ["persist","remove"], inversedBy: 'Produits')]
+    #[ORM\ManyToOne( inversedBy: 'Produits')]
     private ?Categorie $categorie = null;
 
     public function getId(): ?int

@@ -23,7 +23,7 @@ class Categorie
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDAjout = null;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produits::class )]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produits::class, cascade: ['persist','remove'] )]
     private Collection $Produits;
 
     public function __construct()
